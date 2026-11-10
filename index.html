@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daryan Mamsaleh, Softwareentwicklung</title>
+  <meta name="description" content="Portfolio von Daryan Mamsaleh, HTL Leonding. Sucht ein Praktikum von August bis September 2027.">
+  <meta name="theme-color" content="#071f16">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='10' y='4' width='44' height='56' rx='6' fill='%23f3ecdc'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%2317130e'%3E%E2%99%A0%3C/text%3E%3C/svg%3E">
+  <script>
+    // Before first paint: pick the language and whether the 3D layer may run.
+    (function () {
+      var d = document.documentElement, ok = false, lang;
+      try { ok = !!document.createElement("canvas").getContext("webgl2"); } catch (e) {}
+      d.classList.add(ok ? "gl" : "no-gl");
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) d.classList.add("rm");
+      try { lang = new URLSearchParams(location.search).get("lang") || localStorage.getItem("lang"); } catch (e) {}
+      if (lang !== "de" && lang !== "en") lang = /^de\b/i.test(navigator.language || "") ? "de" : "en";
+      d.lang = lang;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@700;900&family=League+Gothic&family=Sofia+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  { "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.min.js",
+    "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.core.js": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.core.min.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/"
+  } }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Zum Inhalt springen</a>
+
+  <header class="site-header">
+    <a class="wordmark" href="#top"><span aria-hidden="true">D<span>♠</span>M</span><span class="sr">Daryan Mamsaleh</span></a>
+
+    <div class="dealer">
+      <div class="hp" role="img" data-i18n-aria="nav.hp" aria-label="Dealer-HP">
+        <span class="hp-num"><b id="hpNum">150</b> HP</span>
+        <span class="hp-track"><span class="hp-fill" id="hpFill"></span></span>
+      </div>
+      <nav class="marks" data-i18n-aria="nav.chapters" aria-label="Kapitel">
+        <a class="idx red" href="#moodle" data-mark="1"><b>J</b><i>♦</i><span class="sr" data-i18n="mark.moodle">Moodle Task Fetcher</span></a>
+        <a class="idx" href="#excuse" data-mark="2"><b>Q</b><i>♣</i><span class="sr" data-i18n="mark.excuse">SimpleExcuseList</span></a>
+        <a class="idx" href="#tracker" data-mark="3"><b>K</b><i>♠</i><span class="sr" data-i18n="mark.tracker">Blazers + Jets Tracker</span></a>
+        <a class="idx" href="#skills" data-mark="4"><b>10</b><i>♠</i><span class="sr" data-i18n="mark.skills">Fähigkeiten</span></a>
+        <a class="idx red" href="#bustatro" data-mark="6"><b>A</b><i>♥</i><span class="sr" data-i18n="mark.bustatro">Bustatro</span></a>
+      </nav>
+    </div>
+
+    <div class="actions">
+      <div class="lang" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
+        <button type="button" data-lang="de">DE</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="btn btn--brass" href="#cashout" data-i18n="nav.contact">Kontakt</a>
+    </div>
+  </header>
+
+  <div class="stage" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 700px)" srcset="poster-tall.webp">
+      <img class="poster" src="poster-wide.webp" alt="" width="1600" height="1000" fetchpriority="high">
+    </picture>
+    <canvas id="gl"></canvas>
+  </div>
+
+  <main id="main">
+    <!-- 0 · establishing: the table -->
+    <section class="scene" id="top" data-scene="0" style="--h: 100">
+      <div class="hold band">
+        <div class="copy copy--hero">
+          <h1><span>Daryan</span> <span>Mamsaleh</span></h1>
+          <p class="lead" data-i18n="hero.lead">Ich bin im 4. Jahrgang der <strong>HTL Leonding</strong> und entwickle Software mit Java, C# und TypeScript, von CLI-Tools über Web-Apps mit Live-Daten bis zu einem eigenen Spiel. <strong>Von August bis September 2027 suche ich ein Praktikum.</strong></p>
+          <div class="cta">
+            <a class="btn btn--brass" href="mailto:mamsalehdaryan@gmail.com" data-i18n="hero.mail">E-Mail schreiben</a>
+            <a class="btn" href="https://github.com/darmamsalehhtl" target="_blank" rel="noopener" data-i18n="hero.github">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 · small blind -->
+    <section class="scene" id="moodle" data-scene="1" style="--h: 190">
+      <div class="hold band">
+        <div class="copy copy--right">
+          <h2><span class="idx red" aria-hidden="true"><b>J</b><i>♦</i></span>Moodle Task Fetcher</h2>
+          <p data-i18n="moodle.text">Ein Node.js-CLI, das meine offenen Abgaben aus Moodle holt und sie auf dem Mac in eine Erinnerungsliste synchronisiert. Moodle hat keinen persönlichen Aufgaben-Feed, also nutzt es die Web-Services-API mit einem iCal-Export als Fallback.</p>
+          <p class="score" data-i18n="moodle.score">Small Blind: <b>10</b> Chips × <b>1</b> Mult</p>
+          <a class="btn" href="https://github.com/darmamsalehhtl/reminders-moodle" target="_blank" rel="noopener" data-i18n="code">Code auf GitHub</a>
+        </div>
+        <div class="fallback-card red" aria-hidden="true"><span class="idx"><b>J</b><i>♦</i></span><strong>Moodle Task Fetcher</strong><small>Node.js CLI</small></div>
+      </div>
+    </section>
+
+    <!-- 2 · big blind -->
+    <section class="scene" id="excuse" data-scene="2" style="--h: 190">
+      <div class="hold band">
+        <div class="copy copy--left">
+          <h2><span class="idx" aria-hidden="true"><b>Q</b><i>♣</i></span>SimpleExcuseList</h2>
+          <p data-i18n="excuse.text">Eine Web-App aus einem Teamprojekt, damit Entschuldigungen nicht mehr auf Papier verloren gehen. Fehlzeiten kommen direkt aus WebUntis, Eltern unterschreiben am Handy mit dem Finger, Lehrkräfte sehen sofort, was offen ist. Vue, TypeScript, Docker.</p>
+          <p class="score" data-i18n="excuse.score">Big Blind: <b>15</b> Chips × <b>1</b> Mult</p>
+          <a class="btn" href="https://github.com/2526-wmc-3bhif-classroom-org/sommerprojekt-wmc-simpleexcuselist" target="_blank" rel="noopener" data-i18n="code">Code auf GitHub</a>
+        </div>
+        <div class="fallback-card" aria-hidden="true"><span class="idx"><b>Q</b><i>♣</i></span><strong>SimpleExcuseList</strong><small>Vue + WebUntis</small></div>
+      </div>
+    </section>
+
+    <!-- 3 · casino 2 -->
+    <section class="scene" id="tracker" data-scene="3" style="--h: 190">
+      <div class="hold band">
+        <div class="copy copy--right">
+          <h2><span class="idx" aria-hidden="true"><b>K</b><i>♠</i></span>Blazers + Jets Tracker</h2>
+          <p data-i18n="tracker.text">Eine installierbare Web-App mit Live-Statistiken zu den Portland Trail Blazers und den New York Jets. Sie zieht Spieldaten direkt aus ESPNs JSON-Endpunkten, rechnet Kennzahlen wie EPA, Four Factors und ein eigenes MVP-Ranking aus, und GitHub Actions baut die Saisondaten alle drei Stunden neu. React, TypeScript, Vite.</p>
+          <p class="score" data-i18n="tracker.score">Casino 2, Small Blind: <b>25</b> Chips × <b>1</b> Mult</p>
+          <div class="cta">
+            <a class="btn btn--brass" href="https://darmamsalehhtl.github.io/blazers-jets-tracker/" target="_blank" rel="noopener" data-i18n="live">Live ansehen</a>
+            <a class="btn" href="https://github.com/darmamsalehhtl/blazers-jets-tracker" target="_blank" rel="noopener" data-i18n="code">Code auf GitHub</a>
+          </div>
+        </div>
+        <div class="fallback-card" aria-hidden="true"><span class="idx"><b>K</b><i>♠</i></span><strong>Blazers + Jets Tracker</strong><small>React + ESPN data</small></div>
+      </div>
+    </section>
+
+    <!-- 4 · the cheats: skills -->
+    <section class="scene" id="skills" data-scene="4" style="--h: 170">
+      <div class="hold band">
+        <div class="copy copy--band">
+          <h2><span class="idx" aria-hidden="true"><b>10</b><i>♠</i></span><span data-i18n="skills.title">Womit ich spiele</span></h2>
+          <div class="skill-cols">
+            <div>
+              <h3 data-i18n="skills.langs">Programmiersprachen</h3>
+              <ul class="skill-list skill-list--red">
+                <li>Java</li><li>C#</li><li>SQL</li><li>C</li><li>HTML/CSS</li><li>JavaScript/TypeScript</li>
+              </ul>
+            </div>
+            <div>
+              <h3 data-i18n="skills.tools">Werkzeuge</h3>
+              <ul class="skill-list skill-list--ink">
+                <li>Git</li><li>Linux</li><li>Docker</li><li>Kubernetes</li><li>MS Office</li>
+              </ul>
+            </div>
+            <div>
+              <h3 data-i18n="skills.life">Abseits vom Tisch</h3>
+              <p data-i18n="skills.lifeText">Samstags arbeite ich bei <strong>SPAR</strong>. Ich spreche Deutsch, Englisch und Kurdisch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · the peak: boss blind -->
+    <section class="scene scene--peak" id="boss" data-scene="5" style="--h: 150">
+      <div class="hold band">
+        <h2 class="copy copy--top peak"><span data-i18n="peak.label">Blackjack</span> <span class="led">50 × 2</span></h2>
+        <div class="fallback-card fallback-card--peak red" aria-hidden="true"><span class="idx"><b>A</b><i>♥</i></span><strong class="led">21</strong><small>Bustatro</small></div>
+      </div>
+    </section>
+
+    <!-- 6 · bustatro -->
+    <section class="scene" id="bustatro" data-scene="6" style="--h: 170">
+      <div class="hold band">
+        <div class="copy copy--right">
+          <h2><span class="idx red" aria-hidden="true"><b>A</b><i>♥</i></span>Bustatro</h2>
+          <p data-i18n="bustatro.text">Mein eigenes Roguelike-Blackjack. Statt Geld zu gewinnen, machst du dem Dealer Schaden, berechnet aus Chips × Mult. Acht Casinos, Boss Blinds, die die Regeln ändern, und Cheats wie Bust Buffer oder Card Counter. React mit Vite, dazu Express und SQLite für die Spielstände.</p>
+          <p class="score" data-i18n="bustatro.score">Boss Blind: <b>50</b> Chips × <b>2</b> Mult. Dealer besiegt.</p>
+          <a class="btn" href="https://github.com/darmamsalehhtl/bustatro" target="_blank" rel="noopener" data-i18n="code">Code auf GitHub</a>
+        </div>
+        <div class="fallback-card red" aria-hidden="true"><span class="idx"><b>A</b><i>♥</i></span><strong>Bustatro</strong><small>React + Express</small></div>
+      </div>
+    </section>
+
+    <!-- 7 · bonus round: playable -->
+    <section class="scene scene--game" id="play" data-scene="7">
+      <div class="band game-band">
+        <div class="game-head">
+          <h2 data-i18n="game.title">Spiel eine Hand</h2>
+          <p data-i18n="game.text">Eine Mini-Version von Bustatro. Gewonnene Hände machen so viel Schaden wie deine Summe, Blackjack macht 42. Du hast 5 Hände, um den Dealer von 60 HP auf null zu bringen. Dein Cheat <strong>Bust Buffer</strong> macht aus deiner ersten 22 eine 21.</p>
+        </div>
+
+        <div class="table" id="game">
+          <div class="hud">
+            <div class="hud-hp">
+              <span data-i18n="game.hp">Dealer-HP</span>
+              <span class="hud-track"><span class="hud-fill" id="gHpFill"></span></span>
+              <b class="led" id="gHp">60</b>
+            </div>
+            <div><span data-i18n="game.hands">Hände übrig</span> <b class="led" id="gHands">5</b></div>
+            <div><span data-i18n="game.cheat">Cheat</span> <b id="gCheat" class="cheat">Bust Buffer</b></div>
+          </div>
+
+          <div class="row">
+            <span class="row-label"><span data-i18n="game.dealer">Dealer</span> <b id="gDealerTotal"></b></span>
+            <div class="cards" id="gDealer"></div>
+          </div>
+          <div class="row">
+            <span class="row-label"><span data-i18n="game.you">Du</span> <b id="gPlayerTotal"></b></span>
+            <div class="cards" id="gPlayer"></div>
+          </div>
+
+          <p class="msg" id="gMsg" aria-live="polite"></p>
+
+          <div class="controls">
+            <button type="button" class="btn btn--brass" id="gDeal" data-i18n="game.deal">Geben</button>
+            <button type="button" class="btn" id="gHit" data-i18n="game.hit" disabled>Karte</button>
+            <button type="button" class="btn" id="gStand" data-i18n="game.stand" disabled>Stehen</button>
+          </div>
+        </div>
+        <p class="note" data-i18n="game.full">Das ganze Spiel mit acht Casinos und Boss Blinds liegt <a href="https://github.com/darmamsalehhtl/bustatro" target="_blank" rel="noopener">auf GitHub</a>.</p>
+      </div>
+    </section>
+
+    <!-- 8 · resolution: cash out -->
+    <section class="scene" id="cashout" data-scene="8" style="--h: 100">
+      <div class="hold band">
+        <div class="copy copy--left slip-wrap">
+          <h2 data-i18n="cash.title">Auszahlung</h2>
+          <div class="slip">
+            <dl>
+              <div><dt data-i18n="cash.to">Auszahlung an</dt><dd>Daryan Mamsaleh</dd></div>
+              <div><dt data-i18n="cash.want">Gesucht</dt><dd data-i18n="cash.wantText">Praktikum, August bis September 2027</dd></div>
+              <div><dt data-i18n="cash.mail">E-Mail</dt><dd><a href="mailto:mamsalehdaryan@gmail.com">mamsalehdaryan@gmail.com</a></dd></div>
+              <div><dt data-i18n="cash.phone">Telefon</dt><dd><a href="tel:+436608915259">+43 660 8915259</a></dd></div>
+              <div><dt data-i18n="cash.github">GitHub</dt><dd><a href="https://github.com/darmamsalehhtl" target="_blank" rel="noopener">darmamsalehhtl</a></dd></div>
+            </dl>
+            <a class="btn btn--ink" href="mailto:mamsalehdaryan@gmail.com" data-i18n="cash.cta">E-Mail schreiben</a>
+          </div>
+          <p class="foot" data-i18n="foot">© 2026 Daryan Mamsaleh. Beim Bau dieser Seite wurden keine Karten gezählt.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+  <script type="module" src="scene.js"></script>
+</body>
+</html>
